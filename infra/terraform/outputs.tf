@@ -62,3 +62,8 @@ output "evaluation_sqs_url" {
   description = "URL da fila SQS do evaluation-service"
   value       = aws_sqs_queue.evaluation_events.url
 }
+
+output "analytics_dynamodb_table" {
+  description = "Nome da tabela DynamoDB do analytics-service"
+  value       = aws_dynamodb_table.analytics.name
+}

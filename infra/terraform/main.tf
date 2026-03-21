@@ -334,3 +334,18 @@ resource "aws_sqs_queue" "evaluation_events" {
     Name = "${var.cluster_name}-evaluation-events"
   })
 }
+
+resource "aws_dynamodb_table" "analytics" {
+  name         = "ToggleMasterAnalytics"
+  billing_mode = "PAY_PER_REQUEST"
+  hash_key     = "event_id"
+
+  attribute {
+    name = "event_id"
+    type = "S"
+  }
+
+  tags = merge(local.common_tags, {
+    Name = "ToggleMasterAnalytics"
+  })
+}
