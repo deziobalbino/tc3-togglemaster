@@ -57,3 +57,8 @@ output "targeting_db_name" {
   description = "Nome do banco do targeting-service"
   value       = aws_db_instance.targeting.db_name
 }
+
+output "evaluation_sqs_url" {
+  description = "URL da fila SQS do evaluation-service"
+  value       = aws_sqs_queue.evaluation_events.url
+}

@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: evaluation-service
+  namespace: togglemaster
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: evaluation-service
+  template:
+    metadata:
+      labels:
+        app: evaluation-service
+    spec:
+      containers:
+        - name: evaluation-service
+          image: 518900743906.dkr.ecr.us-east-1.amazonaws.com/tc3-togglemaster-evaluation:cd54e7a5ce983a3f307ce9b508d76c30ca6b1d07
+          ports:
+            - containerPort: 8004
+          env:
+            - name: PORT
+              valueFrom:
+                secretKeyRef:
+                  name: evaluation-service-secret
+                  key: PORT
+            - name: REDIS_URL
+              valueFrom:
+                secretKeyRef:
+                  name: evaluation-service-secret
+                  key: REDIS_URL
+            - name: FLAG_SERVICE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: evaluation-service-secret
+                  key: FLAG_SERVICE_URL
+            - name: TARGETING_SERVICE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: evaluation-service-secret
+                  key: TARGETING_SERVICE_URL
+            - name: SERVICE_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: evaluation-service-secret
+                  key: SERVICE_API_KEY
+            - name: AWS_SQS_URL
+              valueFrom:
+                secretKeyRef:
+                  name: evaluation-service-secret
+                  key: AWS_SQS_URL
+            - name: AWS_REGION
+              valueFrom:
+                secretKeyRef:
+                  name: evaluation-service-secret
+                  key: AWS_REGION

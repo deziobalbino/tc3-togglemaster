@@ -326,3 +326,11 @@ resource "aws_db_instance" "targeting" {
     Name = "${var.cluster_name}-targeting-db"
   })
 }
+
+resource "aws_sqs_queue" "evaluation_events" {
+  name = "${var.cluster_name}-evaluation-events"
+
+  tags = merge(local.common_tags, {
+    Name = "${var.cluster_name}-evaluation-events"
+  })
+}
