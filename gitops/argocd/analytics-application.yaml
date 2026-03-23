@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/Pereira277/tc3-togglemaster.git
+    repoURL: https://github.com/deziobalbino/tc3-togglemaster.git
     targetRevision: main
     path: gitops/analytics
   destination:

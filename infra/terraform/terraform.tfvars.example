@@ -1,5 +1,5 @@
-vpc_name              = "lucas-fase3-vpc"
-cluster_name          = "lucas-fase3-eks"
+vpc_name              = "togglemaster-fase3-vpc"
+cluster_name          = "togglemaster-fase3-eks"
 eks_cluster_role_name = "ROLE_DO_CLUSTER"
 eks_node_role_name    = "ROLE_DO_NODEGROUP"
 

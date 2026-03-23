@@ -2,7 +2,7 @@ locals {
   common_tags = {
     Project     = "fase3"
     Environment = "lab"
-    Owner       = "lucas"
+    Owner       = "togglemaster"
   }
 }
 
