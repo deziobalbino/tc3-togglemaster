@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: flag-service
-          image: 518900743906.dkr.ecr.us-east-1.amazonaws.com/tc3-togglemaster-flag:8078179dc189c207fb7286c987dfb257313d3c1e
+          image: 518900743906.dkr.ecr.us-east-1.amazonaws.com/tc3-togglemaster-flag:3db0b754a0cd6a2bdf3cdab68f1011f4130d36d5
           ports:
             - containerPort: 8002
           env:
