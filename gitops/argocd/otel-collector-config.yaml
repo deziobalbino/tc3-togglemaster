@@ -4,7 +4,10 @@ metadata:
   name: otel-collector-conf
   namespace: monitoring
 data:
-  otel-collector-config: |
+  relay: | # <--- Mantido exatamente como 'relay'
+    extensions:
+      health_check:
+        endpoint: 0.0.0.0:13133
     receivers:
       otlp:
         protocols:
@@ -17,13 +20,14 @@ data:
         endpoint: "0.0.0.0:8889"
       loki:
         endpoint: "http://loki.monitoring.svc.cluster.local:3100/loki/api/v1/push"
-      logging:
+      debug:
         verbosity: detailed
     service:
+      extensions: [health_check]
       pipelines:
         metrics:
           receivers: [otlp]
-          exporters: [prometheus, logging]
+          exporters: [prometheus, debug]
         logs:
           receivers: [otlp]
-          exporters: [loki, logging]
+          exporters: [loki, debug]
