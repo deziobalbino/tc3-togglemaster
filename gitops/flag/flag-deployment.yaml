@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: flag-service
-          image: 133808368412.dkr.ecr.us-east-1.amazonaws.com/tc3-togglemaster-flag:3db0b754a0cd6a2bdf3cdab68f1011f4130d36d5
+          image: 133808368412.dkr.ecr.us-east-1.amazonaws.com/tc3-togglemaster-flag:latest 
           ports:
             - containerPort: 8002
           env:
@@ -34,3 +34,14 @@ spec:
                 secretKeyRef:
                   name: flag-service-secret
                   key: AUTH_SERVICE_URL
+            # ==========================================
+            # CONFIGURAÇÕES DO OPENTELEMETRY
+            # ==========================================
+            - name: OTEL_SERVICE_NAME
+              value: "flag-service"
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              value: "http://otel-collector-opentelemetry-collector.monitoring.svc.cluster.local:4317"
+            - name: OTEL_EXPORTER_OTLP_PROTOCOL
+              value: "grpc"
+            - name: OTEL_RESOURCE_ATTRIBUTES
+              value: "deployment.environment=production"
