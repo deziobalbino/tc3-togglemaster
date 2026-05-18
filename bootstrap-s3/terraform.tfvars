@@ -1,1 +1,1 @@
-bucket_name = "lucas-fase4-tfstate-001"
+bucket_name = "tc-fase4-tfstate-001"
